@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class PostRepository
 {
-    public function store($request): Model|Post
+    public function store(array $data): Model|Post
     {
         return Post::query()->create([
-            'title' => $request->get('title'),
-            'content' => $request->get('content'),
+            'title' => $data['title'],
+            'content' => $data['content'],
             'user_id' => Auth::id(),
         ]);
 
